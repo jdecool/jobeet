@@ -1,0 +1,23 @@
+App\Entity\Category:
+    type: entity
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:
+            type: string
+            length: 63
+
+    oneToMany:
+        jobs:
+            targetEntity: Job
+            mappedBy: category
+
+    manyToMany:
+        affiliates:
+            targetEntity: Affiliate
+            inversedBy: categories

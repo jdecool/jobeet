@@ -1,0 +1,34 @@
+App\Entity\Affiliate:
+    type: entity
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        url:
+            type: string
+            length: 255
+
+        email:
+            type: string
+            length: 255
+            unique: true
+
+        token:
+            type: string
+            length: 255
+            unique: true
+
+        createdAt:
+            type: datetime
+
+    manyToMany:
+        categories:
+            targetEntity: Category
+            mappedBy: affiliates
+
+    lifecycleCallbacks:
+        prePersist: [ setCreatedAtValue ]
