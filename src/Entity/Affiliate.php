@@ -144,7 +144,7 @@ class Affiliate
      *
      * @return bool
      */
-    public function getisActive(): bool
+    public function isActive(): bool
     {
         return $this->isActive;
     }
