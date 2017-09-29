@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}Jobeet{% endblock %}</title>
-        <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/vendor/1-col-portfolio.css">
+        <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/1-col-portfolio.css') }}">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -22,9 +22,9 @@
             {% block body %}{% endblock %}
         </div>
 
-        <script src="/vendor/jquery/jquery-3.2.1.slim.min.js"></script>
-        <script src="/vendor/popper/popper.min.js"></script>
-        <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="{{ asset('vendor/jquery/jquery-3.2.1.slim.min.js') }}"></script>
+        <script src="{{ asset('vendor/popper/popper.min.js') }}"></script>
+        <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
