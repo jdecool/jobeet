@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Helper\SlugifyHelper;
 use DateTime;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 
@@ -115,6 +116,16 @@ class Job
     }
 
     /**
+     * Get company slug
+     *
+     * @return string
+     */
+    public function getCompanySlug(): string
+    {
+        return SlugifyHelper::slugify($this->company);
+    }
+
+    /**
      * Get company
      *
      * @return string
@@ -184,6 +195,16 @@ class Job
     }
 
     /**
+     * Get position slug
+     *
+     * @return string
+     */
+    public function getPositionSlug(): string
+    {
+        return SlugifyHelper::slugify($this->position);
+    }
+
+    /**
      * Get position
      *
      * @return string
@@ -204,6 +225,16 @@ class Job
         $this->position = $position;
 
         return $this;
+    }
+
+    /**
+     * Get location slug
+     *
+     * @return string
+     */
+    public function getLocationSlug(): string
+    {
+        return SlugifyHelper::slugify($this->location);
     }
 
     /**

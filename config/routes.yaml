@@ -2,6 +2,15 @@ index:
     path: /
     defaults: { _controller: 'App\Controller\JobController::index' }
 
+job_show:
+    path: /job/{company}/{location}/{id}/{position}
+    defaults: { _controller: 'App\Controller\JobController::show' }
+    requirements:
+        id: '\d+'
+        company: '[A-Za-z0-9\-]+'
+        location: '[A-Za-z0-9\-]+'
+        position: '[A-Za-z0-9\-]+'
+
 # Depends on sensio/framework-extra-bundle, doctrine/annotations, and doctrine/cache
 #   install with composer req sensio/framework-extra-bundle annot
 #controllers:

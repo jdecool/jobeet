@@ -14,7 +14,7 @@
                 <h3>{{ job.position }}</h3>
                 <p>{{ job.description }}</p>
                 <p>Posted on {{ job.createdAt|date("m/d/Y") }}</p>
-                <a class="btn btn-primary" href="#">See more</a>
+                <a class="btn btn-primary" href="{{ path('job_show', { 'id': job.id, 'company': job.companySlug, 'location': job.locationSlug, 'position': job.positionSlug }) }}">See more</a>
             </div>
         </div>
 
