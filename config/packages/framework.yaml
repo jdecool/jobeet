@@ -3,11 +3,12 @@ framework:
     #default_locale: en
     #csrf_protection: ~
     #http_method_override: true
-    #trusted_hosts: ~
-    # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+
+    # uncomment this entire section to enable sessions
     #session:
-    #    handler_id: session.handler.native_file
-    #    save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+    #    # With this config, PHP's native session handling is used
+    #    handler_id: ~
+
     #esi: ~
     #fragments: ~
     php_errors:

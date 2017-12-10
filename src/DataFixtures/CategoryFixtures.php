@@ -1,13 +1,12 @@
 <?php
 
-namespace App\DataFixtures\ORM;
+namespace App\DataFixtures;
 
 use App\Entity\Category;
-use Doctrine\Common\DataFixtures\AbstractFixture;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterface
+class CategoryFixtures extends Fixture
 {
     /**
      * {@inheritdoc}
@@ -36,13 +35,5 @@ class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterfac
         $this->addReference('category-programming', $programming);
         $this->addReference('category-managing', $managing);
         $this->addReference('category-administrator', $administrator);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getOrder()
-    {
-        return 1;
     }
 }
