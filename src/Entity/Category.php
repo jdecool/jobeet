@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 class Category
 {
@@ -65,7 +66,7 @@ class Category
      *
      * @return array
      */
-    public function getJobs(): array
+    public function getJobs(): Collection
     {
         return $this->jobs;
     }
@@ -88,7 +89,7 @@ class Category
      *
      * @return Affiliate[]
      */
-    public function getAffiliates(): array
+    public function getAffiliates(): Collection
     {
         return $this->affiliates;
     }

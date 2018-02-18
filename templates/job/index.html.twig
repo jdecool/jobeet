@@ -3,22 +3,28 @@
 {% block body %}
     <h1 class="my-4">Liste des offres</h1>
 
-    {% for job in jobs %}
+    {% for category, jobs in categories %}
         <div class="row">
-            <div class="col-md-7">
-                <a href="#">
-                    <img class="img-fluid rounded mb-3 mb-md-0" src="{{ asset('images/' ~ job.logo) }}" alt="{{ job.company }}">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h3>{{ job.position }}</h3>
-                <p>{{ job.description }}</p>
-                <p>Posted on {{ job.createdAt|date("m/d/Y") }}</p>
-                <a class="btn btn-primary" href="{{ path('job_show', { 'id': job.id, 'company': job.companySlug, 'location': job.locationSlug, 'position': job.positionSlug }) }}">See more</a>
-            </div>
-        </div>
+            <h2 style="font-weight: bold; margin: 2rem 0;">{{ category }}</h2>
 
-        <hr>
+            {% for job in jobs %}
+                <div class="row">
+                    <div class="col-md-7">
+                        <a href="#">
+                            <img class="img-fluid rounded mb-3 mb-md-0" src="{{ asset('images/' ~ job.logo) }}" alt="{{ job.company }}">
+                        </a>
+                    </div>
+                    <div class="col-md-5">
+                        <h3>{{ job.position }}</h3>
+                        <p>{{ job.description }}</p>
+                        <p>Posted on {{ job.createdAt|date("m/d/Y") }}</p>
+                        <a class="btn btn-primary" href="{{ path('job_show', { 'id': job.id, 'company': job.companySlug, 'location': job.locationSlug, 'position': job.positionSlug }) }}">See more</a>
+                    </div>
+                </div>
+
+                <hr>
+            {% endfor %}
+        </div>
     {% endfor %}
 
     <ul class="pagination justify-content-center">

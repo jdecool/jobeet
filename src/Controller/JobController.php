@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Job;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,10 +14,15 @@ class JobController extends AbstractController
 {
     public function index(EntityManagerInterface $em): Response
     {
-        $jobs = $em->getRepository(Job::class)->findAll();
+        $categories = $em->getRepository(Category::class)->findCategoriesWithJobs();
+
+        $jobsCategories = [];
+        foreach ($categories as $category) {
+            $jobsCategories[$category->getName()] = $em->getRepository(Job::class)->findActiveByCategory($category);
+        }
 
         return $this->render('job/index.html.twig', [
-            'jobs' => $jobs,
+            'categories' => $jobsCategories,
         ]);
     }
 
@@ -25,6 +32,11 @@ class JobController extends AbstractController
         // correspondent à une offre d'emploi valide
         $job = $em->getRepository(Job::class)->find($id);
         if (null === $job) {
+            throw new NotFoundHttpException();
+        }
+
+        $currentDate = new DateTime();
+        if ($job->getExpiresAt() < $currentDate) {
             throw new NotFoundHttpException();
         }
 

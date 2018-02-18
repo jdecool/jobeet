@@ -1,5 +1,6 @@
 App\Entity\Job:
     type: entity
+    repositoryClass: App\Repository\JobRepository
 
     id:
         id:
@@ -77,5 +78,5 @@ App\Entity\Job:
                 referencedColumnName: id
 
     lifecycleCallbacks:
-        prePersist: [ setCreatedAtValue ]
+        prePersist: [ setCreatedAtValue, setExpiresAtValue ]
         preUpdate: [ setUpdatedAtValue ]

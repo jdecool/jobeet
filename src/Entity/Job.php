@@ -8,6 +8,8 @@ use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 
 class Job
 {
+    public const OFFER_LIFETIME = 30; // en jours
+
     /** @var int */
     private $id;
 
@@ -439,6 +441,23 @@ class Job
     public function getUpdatedAt(): ?DateTime
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set expiresAt
+     *
+     * @param LifecycleEventArgs $event
+     * @return Job
+     */
+    public function setExpiresAtValue(LifecycleEventArgs $event): self
+    {
+        // nous remplissons automatiquement la date d'expiration si cette dernière n'a pas été saisie
+        // manuellement
+        if (!$this->expiresAt) {
+            $this->expiresAt = new DateTime('+'.self::OFFER_LIFETIME.' day');
+        }
+
+        return $this;
     }
 
     /**

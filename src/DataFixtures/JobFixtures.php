@@ -31,7 +31,6 @@ class JobFixtures extends Fixture implements DependentFixtureInterface
         $jobSensioLabs->setIsActivated(true);
         $jobSensioLabs->setToken('job_sensio_labs');
         $jobSensioLabs->setEmail('job@example.com');
-        $jobSensioLabs->setExpiresAt(new \DateTime('2012-10-10'));
         $manager->persist($jobSensioLabs);
 
         $jobExtremeSensio = new Job();
@@ -48,8 +47,24 @@ class JobFixtures extends Fixture implements DependentFixtureInterface
         $jobExtremeSensio->setIsActivated(true);
         $jobExtremeSensio->setToken('job_extreme_sensio');
         $jobExtremeSensio->setEmail('job@example.com');
-        $jobExtremeSensio->setExpiresAt(new \DateTime('2012-10-10'));
         $manager->persist($jobExtremeSensio);
+
+        $jobSensioExpired = new Job();
+        $jobSensioExpired->setCategory($categoryProgramming);
+        $jobSensioExpired->setType('full-time');
+        $jobSensioExpired->setCompany('Extreme Sensio');
+        $jobSensioExpired->setLogo('extreme-sensio.gif');
+        $jobSensioExpired->setUrl('http://www.extreme-sensio.com/');
+        $jobSensioExpired->setPosition('Software engineer');
+        $jobSensioExpired->setLocation('Paris, France');
+        $jobSensioExpired->setDescription('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.');
+        $jobSensioExpired->setHowToApply('Send your resume to fabien.potencier [at] sensio.com');
+        $jobSensioExpired->setIsPublic(true);
+        $jobSensioExpired->setIsActivated(true);
+        $jobSensioExpired->setToken('job_extreme_sensio_disable');
+        $jobSensioExpired->setEmail('job@example.com');
+        $jobSensioExpired->setExpiresAt(new \DateTime('2018-01-01'));
+        $manager->persist($jobSensioExpired);
 
         $manager->flush();
     }
